@@ -441,19 +441,24 @@ if __name__ == "__main__":
     def generateFixedHints():
         '''Fix some random hints to create a random grid'''
         fixedHints = []
-        for i in range(9):
+        for i in range(9):  # We fixe 9 random hints
                 x = random.randint(1, 9)
                 y = random.randint(1, 9)
                 z = random.randint(1, 9)
                 fixedHints.append(x*100 + y*10 + z)
         fixedHints = removeContradictions(fixedHints)
-        return fixedHints        
+        return fixedHints     
+
+    def removeMaxHints():
+    
+    def checkDecisiveHint():
 
     def generateRandomGrid():
         '''Force the solver to find a random Sudoku solution'''
         satisfiable = False
-        while not satisfiable:
-            fixedHints = generateFixedHints()
+        # We have to be sure that Sudoku grid is resolvable with the fixed hints
+        while not satisfiable:   
+            fixedHints = generateFixedHints()  
             solver = Solver()  
             solver._config.verbosity = 0
             solver._config.printModel = False
@@ -491,7 +496,7 @@ if __name__ == "__main__":
         newSolver = Solver()
         newSolver._config.verbosity = 0
         newSolver._config.printModel = False
-        readFile(newSolver, sys.argv[1])
+        readFile(solver, sys.argv[1])
         newSolver.addClause(negations) # We are looking for a different solution
         for clause in solver._hints:
             newSolver.addClause([clause])
