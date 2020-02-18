@@ -447,11 +447,7 @@ if __name__ == "__main__":
                 z = random.randint(1, 9)
                 fixedHints.append(x*100 + y*10 + z)
         fixedHints = removeContradictions(fixedHints)
-        return fixedHints     
-
-    def removeMaxHints():
-    
-    def checkDecisiveHint():
+        return fixedHints        
 
     def generateRandomGrid():
         '''Force the solver to find a random Sudoku solution'''
@@ -488,15 +484,15 @@ if __name__ == "__main__":
     negations = []
     for solution in solver._hints:
         negations.append(-solution)
-
+    
     anotherSolution = False
     while not anotherSolution: # We get rid of hints until we find another solution
-        hint = solver.getRandomHint() 
+        hint = solver.getRandomHint()
         solver.removeHint(hint)  #  Less and less hints to find another solution
         newSolver = Solver()
         newSolver._config.verbosity = 0
         newSolver._config.printModel = False
-        readFile(solver, sys.argv[1])
+        readFile(newSolver, sys.argv[1])
         newSolver.addClause(negations) # We are looking for a different solution
         for clause in solver._hints:
             newSolver.addClause([clause])
@@ -506,8 +502,10 @@ if __name__ == "__main__":
             anotherSolution=True
             solver.addHint(hint)  # Two solution are possibles, so we add the last removed hint
 
+
+
     print("list of hints : ", solver._hints)
-    print(solver.getSolution())
+    print("solution : ", solver.getSolution())
         
     if result == solver._cst.lit_False:
         print("c UNSATISFIABLE")
