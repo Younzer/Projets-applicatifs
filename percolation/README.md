@@ -1,6 +1,6 @@
 # Percolation
 
-Ce dépôt contient un notebook jupyter dans lequel on réalise une analyse du **<font color=red>seuil de percolation</font>**. L'expérience consiste à étudier le seuil de densité initiale de forêt à partir duquel on peut observer un basculement dans la propagation du feu. Voici une simulation avec deux foyers.
+Ce dépôt contient un notebook jupyter dans lequel on réalise une analyse du <font color=red>seuil de percolation</font>. L'expérience consiste à étudier le seuil de densité initiale de forêt à partir duquel on peut observer un basculement dans la propagation du feu. Voici une simulation avec deux foyers.
 
 ![Alt Text](https://github.com/Younzer/Projets-applicatifs/blob/master/percolation/percolation.gif)
 
