@@ -18,11 +18,13 @@ Nous avons déterminé ce seuil en laissant la possibilité de faire démarrer �
 <div align="center">Figure 1</div>
 
 <br />
-Faire varier la taille de la forêt permet de déterminer plus précisément le seuil de percolation. Ce se trouve à l'intersection des courbes (cf. Fig 2). Nous pouvons observer que plus la taille de la forêt est importante, moins la courbe est lissée, et donc la pente qui caractérise le basculement est plus abrupte. Cela semble logique car elle est moins sensible aux événements rares comme par exemple quand une forêt de petite densité prend quasiment entièrement feu, ou à l'inverse quand une forêt de grande densité est grandement épargnée. Dans le grapge qui suit, nous avons simuler la propagation à partir d'un seul foyer.
+Faire varier la taille de la forêt permet de déterminer plus précisément le seuil de percolation. Ce dernier se trouve à l'intersection des courbes correspondant aux différentes tailles de forêt (cf. Fig 2). Nous pouvons observer que plus la taille de la forêt est importante, moins la courbe est lissée, et donc plus la pente qui caractérise le basculement est marquée. Cela semble logique car elle est moins sensible aux événements rares comme par exemple quand une forêt de petite densité prend quasiment entièrement feu, ou à l'inverse quand une forêt de grande densité est grandement épargnée. 
+
+**Remarque :** Dans le graphe qui suit, nous avons simulé la propagation à partir d'un seul foyer.
 
 ![Logo](https://github.com/Younzer/Projets-applicatifs/blob/master/percolation/seuil_surface.png "Seuil en fonction de la superficie")
 <div align="center">Figure 2</div>
 
 
 ### Conclusion
-En conclusion de notre expérience, nous pouvons donc dire que le seuil varie si on fait varier le nombre de foyers, et qu'il est ***approximativement de 60%*** si on considère qu'il n'y a qu'un seul foyer au départ du feu.
+En conclusion de notre expérience, nous pouvons donc dire que le seuil varie si on fait varier le nombre de foyers (il diminue si on augmente le nombre de foyers et inversement), et qu'il est ***approximativement de 60%*** si on considère qu'il n'y a qu'un seul foyer au départ du feu.
