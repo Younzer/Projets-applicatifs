@@ -14,7 +14,7 @@ player2 = MCTSPlayer()
 player2.newGame(b._WHITE)
 players.append(player2)
 
-totalTime = [0,0] # total real time for each player
+totalTime = [0, 0] # total real time for each player
 nextplayer = 0
 nextplayercolor = b._BLACK
 nbmoves = 1
@@ -29,6 +29,7 @@ while not b.is_game_over():
     print(b)
     print("Before move", nbmoves)
     print("Legal Moves: ", b.legal_moves())
+    print("WHILE : ")
     nbmoves += 1
     otherplayer = (nextplayer + 1) % 2
     othercolor = b._BLACK if nextplayercolor == b._WHITE else b._WHITE

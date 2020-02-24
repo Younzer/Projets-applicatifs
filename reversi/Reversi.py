@@ -44,6 +44,7 @@ class Board:
 
     def get_winner(self):
         results = self.get_nb_pieces()
+        print("Rsultats :", results)
         if results[0] > results[1]:
             return self._WHITE
         if results[0] < results[1]:
@@ -152,11 +153,11 @@ class Board:
         assert player == self._nextPlayer
         if x==-1 and y==-1: # pass
             self._nextPlayer = self._flip(player)
-            self._stack.append([move, self._successivePass, []])
+            self._stack.append([move, []])
             self._successivePass += 1
             return
         toflip = self.testAndBuild_ValidMove(player,x,y)
-        self._stack.append([move, self._successivePass, toflip])
+        self._stack.append([move, toflip])
         self._successivePass = 0
         self._board[x][y] = player
         for xf,yf in toflip:
@@ -171,11 +172,14 @@ class Board:
             self._nextPlayer = self._BLACK
 
     def pop(self):
-        [move, self._successivePass, toflip] = self._stack.pop()
+        print("SELF STACK :", self._stack)
+        [move, toflip] = self._stack.pop()
         [player,x,y] = move
-        self._nextPlayer = player 
+        self._nextPlayer = player
         if len(toflip) == 0: # pass
             assert x == -1 and y == -1
+            #assert self._successivePass > 0
+            self._successivePass -= 1
             return
         self._board[x][y] = self._EMPTY
         for xf,yf in toflip:
@@ -186,6 +190,7 @@ class Board:
         else:
             self._nbWHITE -= 1 + len(toflip)
             self._nbBLACK += len(toflip)
+        return move
 
     # Est-ce que on peut au moins jouer un coup ?
     # Note: cette info pourrait être codée plus efficacement
