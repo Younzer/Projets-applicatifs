@@ -1,5 +1,5 @@
 import Reversi
-import myPlayer
+from MCTS import *
 import time
 from io import StringIO
 import sys
@@ -7,10 +7,10 @@ import sys
 b = Reversi.Board(10)
 
 players = []
-player1 = myPlayer.myPlayer()
+player1 = MCTSPlayer()
 player1.newGame(b._BLACK)
 players.append(player1)
-player2 = myPlayer.myPlayer()
+player2 = MCTSPlayer()
 player2.newGame(b._WHITE)
 players.append(player2)
 

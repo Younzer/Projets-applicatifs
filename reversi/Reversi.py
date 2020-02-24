@@ -42,6 +42,14 @@ class Board:
     def get_nb_pieces(self):
       return (self._nbWHITE, self._nbBLACK)
 
+    def get_winner(self):
+        results = self.get_nb_pieces()
+        if results[0] > results[1]:
+            return self._WHITE
+        if results[0] < results[1]:
+            return self._BLACK
+        return -1
+
     # Vérifie si player a le droit de jouer en (x,y)
     def is_valid_move(self, player, x, y):
         if x == -1 and y == -1:
