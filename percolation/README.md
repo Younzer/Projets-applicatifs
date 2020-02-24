@@ -11,5 +11,5 @@ Afin de ne pas avoir à gérer les points au bord de la map, nous utilisons la f
 Nous déterminé ce seuil en laissant la possibilité de faire démarrer à plusieurs endroits le feu, et en considérant différentes tailles de forêt. Nous pouvons observer (cf. Fig. 1) que faire varier le nombre de foyers semble faire se décaler la courbe :
 * vers la droite si on augmente le nombre de foyers, 
 * ou vers la gauche si on le diminue
-![Logo](https://github.com/Younzer/Projets-applicatifs/blob/master/percolation/seuil_foyers.png "Title")
-|(Fig. 1)|
+![Logo](https://github.com/Younzer/Projets-applicatifs/blob/master/percolation/seuil_foyers.png "Seuil en fonction du nombre de foyers")
+[center](Fig. 1)[/center]
