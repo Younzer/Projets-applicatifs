@@ -12,4 +12,4 @@ Nous déterminé ce seuil en laissant la possibilité de faire démarrer à plus
 * vers la droite si on augmente le nombre de foyers, 
 * ou vers la gauche si on le diminue
 ![Logo](https://github.com/Younzer/Projets-applicatifs/blob/master/percolation/seuil_foyers.png "Seuil en fonction du nombre de foyers")
-[center](Fig. 1)[/center]
+<div align="center">Figure 1</div>
