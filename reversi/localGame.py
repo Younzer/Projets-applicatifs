@@ -4,7 +4,7 @@ import time
 from io import StringIO
 import sys
 
-b = Reversi.Board(10)
+b = Reversi.Board(8)
 
 players = []
 player1 = MCTSPlayer()

@@ -27,26 +27,8 @@ class TreeNode(object):
         board = self.get_next_board_randomly()
         new_node = TreeNode(self,board)
         self._children.append(new_node)
+        print('EXPAND')
         return new_node
-
-    def select(self, root, exploration_rate):
-        """Return best successor of node"""
-        aux = root
-        while len(aux._children)>0:
-            best_node = None
-            best_score = sys.maxsize*-1
-            for node in aux._children:
-                score = node.get_score(exploration_rate)
-                if score>best_score:
-                    best_score = score
-                    best_node = node
-            rand = np.random.rand(1)[0]
-            if rand>0.8:
-                aux = aux.expand()
-            else:
-                aux = best_node
-    
-        return aux
 
     def update(self, leaf_score):
         """Update node values from leaf evaluation"""
@@ -64,7 +46,7 @@ class TreeNode(object):
 
     def get_score(self, c_param):
         """Calculate and return the value for this node"""
-        return self._Q + c_param*math.sqrt(math.log(self._parent._N)/self._N) if self._N != 0 else self._Q
+        return self._Q + c_param*math.sqrt(math.log(self._parent._N)/self._N) if self._N != 0 else 0
 
     def is_leaf(self):
         """Check if leaf node (i.e. no nodes below this have been expanded)."""
@@ -77,7 +59,7 @@ class TreeNode(object):
 class MCTS(object):
     """An implementation of Monte Carlo Tree Search."""
 
-    def __init__(self, board, c_param=0.3, n_playout=80):
+    def __init__(self, board, c_param=2, n_playout=10):
         """
         c_param: a number in (0, inf) that controls the trade-off 
         between exploitation and exploration in Monte Carlo Tree Search
@@ -87,17 +69,28 @@ class MCTS(object):
         self._c_param = c_param
         self._n_playout = n_playout
 
+    def select(self, root):
+        """Return best successor node from root"""
+        current = root
+        while len(current._children)>0:
+            current = max(current._children, key= lambda child: child.get_score(self._c_param))
+            rand = np.random.rand(1)[0]
+            if rand>0.8:
+                print('RANDOM')
+                current = current.expand()
+        return current
+
     def _playout(self, state):
         """Run a single playout from the root to the leaf, getting a value at
         the leaf and propagating it back through its parents.
         State is modified in-place, so a copy must be provided.
         """
+        print('on est ici')
         node = self._root
-        while(1):
-            if node.is_leaf():
-                break
-            node = node.select(self._root, self._c_param)
-
+        while len(node._children)>0:
+            print('IS NOT LEAF')
+            node = self.select(self._root)
+        print('on est lààà')
         if not node._board.is_game_over():
             node.expand()
         while not node._board.is_game_over():
@@ -108,26 +101,34 @@ class MCTS(object):
             leaf_score = 0.0
         else:
             leaf_score = 1.0 if winner != state._nextPlayer else -1.0
-
+        print("leaf score : ",leaf_score)
         # Update value and visit count of nodes in this traversal.
         node.update_recursive(-leaf_score)
 
-    def get_move(self, state):
+    def best_child(self, root, color):
+        """Return the most visited child of a node"""
+        print(root._children)
+        best_child = max(root._children, key= lambda child: max(child._N))
+        move = best_child._board.pop()
+        return move if move != None else (color,-1,-1)
+
+    def get_move(self, state, player):
         """Runs all playouts sequentially and returns the most visited action.
         state: the current game state
         Return: the selected action
         """
         for n in range(self._n_playout):
+            print(n)
             state_copy = copy.deepcopy(state)
             self._playout(state_copy)
 
-        move = best_child(root,color)
+        move = self.best_child(self._root, player)
         return move
 
 
 class MCTSPlayer(object):
     """AI player based on MCTS"""
-    def __init__(self, c_param=0.3, n_playout=80, board_size=10):
+    def __init__(self, c_param=2, n_playout=5, board_size=8):
         self._board = Reversi.Board(board_size)
         self._mcts = MCTS(self._board, c_param, n_playout)
         self._player = None
@@ -136,7 +137,7 @@ class MCTSPlayer(object):
         if self._board.is_game_over():
             print("Referee told me to play but the game is over!")
             return (-1,-1)
-        move = self._mcts.get_move(self._board)
+        move = self._mcts.get_move(self._board, self._player)
         print('move : ',move)
         (p,x,y) = move
         print(move)
