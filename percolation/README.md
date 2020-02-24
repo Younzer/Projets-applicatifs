@@ -10,7 +10,7 @@ Afin de ne pas avoir à gérer les points au bord de la map, nous utilisons la f
 On calcule pour chaque pourcentage de densité initiale (1% puis 2%, 3%, etc jusqu'à 100%) la moyenne du ratio densité finale / densité initiale, et ce sur ***500 itérations***. 
 
 ### Résultats
-Nous déterminé ce seuil en laissant la possibilité de faire démarrer à plusieurs endroits le feu, et en considérant différentes tailles de forêt. Nous pouvons observer (cf. Fig. 1) que faire varier le nombre de foyers semble faire se décaler la courbe :
+Nous avons déterminé ce seuil en laissant la possibilité de faire démarrer à plusieurs endroits le feu, et en considérant différentes tailles de forêt. Nous pouvons observer (cf. Fig. 1) que faire varier le nombre de foyers semble faire se décaler la courbe :
 * vers la droite si on augmente le nombre de foyers, 
 * ou vers la gauche si on le diminue
 
