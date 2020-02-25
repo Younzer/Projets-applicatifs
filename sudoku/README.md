@@ -10,9 +10,14 @@ Nous avons d'abord fait en sorte de pouvoir créer à chaque fois des **grilles 
 Nous faisons appel à la fonction qui suit :
 ![Logo](https://github.com/Younzer/Projets-applicatifs/blob/master/sudoku/images/generate_random_grid.png "Génération de grille aléatoire")
 <br />
+<br />
 La méthode est la suivante :
-* Nous imposons au Solver de résoudre le Sudoku avec une liste d'indices déjà fixés, et ce aléatoirement,
-* Si le Sudoku n'est pas solvable avec ces indices, par exemple s'il y a une contradiction avec deux 1 fixés préalablement dans une même ligne ou une même colonne ou encore un des 9 carrés regroupant 9 chiffres différents, alors on recommence et ce jusqu'à ce que le Sudoku ait une solution possible.
+* Nous imposons au Solver de résoudre le Sudoku avec une liste d'indices déjà fixés, et ce aléatoirement.
+* Si le Sudoku n'est pas solvable avec ces indices, par exemple s'il y a une contradiction avec deux "1" fixés préalablement dans une même ligne ou une même colonne ou encore un des 9 carrés regroupant 9 chiffres différents, alors on recommence et ce jusqu'à ce que le Sudoku ait une solution possible.
+
+La liste d'indices est créée avec la fonction qui suit :
+![Logo](https://github.com/Younzer/Projets-applicatifs/blob/master/sudoku/images/generateFixedHints.png "Génération d'indices aléatoires")
+<br />
 
 
 ### Sortie
