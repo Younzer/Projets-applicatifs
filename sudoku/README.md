@@ -43,13 +43,13 @@ Voici les étapes que nous suivons :
  * On ajoute les indices restants
  * On vérifie s'il y a une nouvelle solution possible, si non, on recommence.
  
-Voici les fonctions que nous utilisons pour gérer les indices de l'instances solver :
+Voici les fonctions que nous utilisons pour gérer les indices de l'instance solver :
 ![Logo](https://github.com/Younzer/Projets-applicatifs/blob/master/sudoku/images/fonctions.png "Fonctions ajoutées à la classe")
 <br />
 <br />
 
-Voici ce que nous obtenons en sortie : la liste d'indices qui permettent d'avoir une seule solution et la solution correspondante :
-![Logo](https://github.com/Younzer/Projets-applicatifs/blob/master/sudoku/images/get_sol.png "Indices et solution")
+Voici ce que nous obtenons en sortie : la liste d'indices qui permet d'avoir une seule solution et la solution correspondante :
+![Logo](https://github.com/Younzer/Projets-applicatifs/blob/master/sudoku/images/list_hints.png "Indices et solution")
 
 
 ### Ouverture
