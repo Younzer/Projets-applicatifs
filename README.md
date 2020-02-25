@@ -3,7 +3,7 @@ Ce répertoire contient les 3 projets applicatifs à faire et à rendre à notre
 
 # Percolation
 
-Ce dépôt contient un notebook jupyter dans lequel on réalise une analyse du **seuil de percolation**. L'expérience consiste à étudier le seuil de densité initiale de forêt à partir duquel on peut observer un basculement dans la propagation du feu. Voici une simulation avec deux foyers :
+Le dossier percolation contient un notebook jupyter dans lequel on réalise une analyse du **seuil de percolation**. L'expérience consiste à étudier le seuil de densité initiale de forêt à partir duquel on peut observer un basculement dans la propagation du feu. Voici une simulation avec deux foyers :
 
 ![Alt Text](https://github.com/Younzer/Projets-applicatifs/blob/master/percolation/percolation.gif)
 
