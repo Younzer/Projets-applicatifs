@@ -1,21 +1,13 @@
-# README #
+# Pysat Sudoku
 
-This is a CDCL Python (3.X) native implementation. It is very slow (like 10x-50x times) but the data structure is a native python one, made with as many tricks as possible.
-It is a nice toy to play with. 
+Pour ce projet applicatif, l'objectif était d'utiliser le solver Pysat afin de générer des grilles de Sudoku n'ayant qu'une seule solution possible.
 
-### Learn Clause Learning Algorithms ###
+### Code
 
-The idea is to be able to quickly play with CDCL concepts.
-If you understand it, you can dig into Minisat/Glucose source code now!
-
-### How to use it? ###
-
-Just go into the src directory and type:
-''
-python pysat.py ../example/sample.cnf
-''
+Nous avons d'abord fait en sorte de pouvoir créer à chaque fois des **grilles différentes**. Le point d'entrée est le suivant : 
+![Logo](https://github.com/Younzer/Projets-applicatifs/blob/master/sudoku/images/entree.png "Point d'entrée")
+Nous faisons appel à la fonction qui suit :
+![Logo](https://github.com/Younzer/Projets-applicatifs/blob/master/sudoku/images/generate_random_grid.png "Génération de grille aléatoire")
 
 
-Note: the DPLL implementation is not yet working. Need to implement a proper heuristics mechanism.
-
-Good luck!
+### Sortie
