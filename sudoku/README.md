@@ -42,6 +42,7 @@ Voici les étapes que nous suivons :
  * On créer un nouveau solver auquel on ajoute les clauses interdisant d'obetnir la même solution
  * On ajoute les indices restants
  * On vérifie s'il y a une nouvelle solution possible, si non, on recommence.
+ * Si on a une seconde solution possible, alors on rajoute le dernier indice enlevé de sorte à avoir une seule solution possible
  
 Voici les fonctions que nous utilisons pour gérer les indices de l'instance solver :
 ![Logo](https://github.com/Younzer/Projets-applicatifs/blob/master/sudoku/images/fonctions.png "Fonctions ajoutées à la classe")
