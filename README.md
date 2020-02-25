@@ -34,6 +34,7 @@ En conclusion de notre expérience, nous pouvons donc dire que le seuil varie si
 
 <br />
 <br />
+
 # Pysat Sudoku
 
 Pour ce projet applicatif, l'objectif était d'utiliser le solver Pysat afin de générer des grilles de Sudoku n'ayant qu'une seule solution possible.
