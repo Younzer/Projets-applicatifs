@@ -4,6 +4,8 @@ Pour ce projet applicatif, l'objectif était d'utiliser le solver Pysat afin de 
 
 ### Code
 
+##### Génération de grilles aléatoires
+
 Nous avons d'abord fait en sorte de pouvoir créer à chaque fois des **grilles différentes**. Le point d'entrée est le suivant : 
 ![Logo](https://github.com/Younzer/Projets-applicatifs/blob/master/sudoku/images/entree.png "Point d'entrée")
 <br />
@@ -24,4 +26,22 @@ Dans l'appel à cette fonction, nous gérons immédiatement le fait que deux ind
 <br />
 <br />
 
-### Sortie
+##### Grille avec un minimum d'indices et une seule solution
+
+Nous avons donc une grille **aléatoire** dont le solver a pu trouver **une** solution à partir des contraintes fixées. L'objectif est d'enlever des chiffres de cette grille pour qu'elle ne soit plus résolue mais à résoudre, tout en s'assurant qu'elle n'ait qu'**une seule solution possible**. C'est ce que nous faisons avec le bout de code qui suit :
+
+![Logo](https://github.com/Younzer/Projets-applicatifs/blob/master/sudoku/images/get_sol.png "Génèration d'une grille à une seule solution")
+<br />
+<br />
+
+Voici les étapes que nous suivons :
+* Nous avons créé un attribut "_hints" 
+
+### Ouverture
+
+Il aurait été intéressant de pouvoir générer des grilles de différentes difficultés. On aurait pu considérer par exemple que moins il y a d'indices pour résoudre la grille et plus elle est difficile à rédoudre. Une solution pour générer des grilles de trois difficultés différentes serait alors la suivante :
+* Pour une *grille facile*, on utiliserait une fonction qui cherche systématiquement s'il y a un indice "décisif" à retirer, c'est-à-dire que si on le retire, il y a alors deux solutions possibles.
+* Pour une *grille moyenne*, nous utiliserions la solution que nous utilisons déjà, on retire à chaque fois un indice de manière aléatoire.
+* Pour une *grille difficile*, ce qui est plus délicat, on chercherait parmis les indices restants s'il y en a un qui ne soit pas décisif, s'il y en a plusieurs on choisit de manière aléatoire à défault d'avoir une meilleure manière de choisir.
+<br />
+Bien sûr, cette solution ne pourrait pas nous assurer d'avoir des grilles de niveaux bienx différents, surtout à cause du choix aléatoire d'indice à enlever, mais c'est une première approche qui peut être intéressant de tester.
