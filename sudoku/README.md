@@ -36,7 +36,21 @@ Nous avons donc une grille **aléatoire** dont le solver a pu trouver **une** so
 
 Voici les étapes que nous suivons :
 * Nous avons créé un attribut "_hints" qui au départ prend l'ensemble de la solution de la grille
-* 
+* On créer la négation de cette solution
+* Puis on répète ces étapes jusqu'à obtenir une nouvelle solution possible :
+ * On enlève un indice "*_hints*" de manière aléatoire
+ * On créer un nouveau solver auquel on ajoute les clauses interdisant d'obetnir la même solution
+ * On ajoute les indices restants
+ * On vérifie s'il y a une nouvelle solution possible, si non, on recommence.
+ 
+Voici les fonctions que nous utilisons pour gérer les indices de l'instances solver :
+![Logo](https://github.com/Younzer/Projets-applicatifs/blob/master/sudoku/images/fonctions.png "Fonctions ajoutées à la classe")
+<br />
+<br />
+
+Voici ce que nous obtenons en sortie : la liste d'indices qui permettent d'avoir une seule solution et la solution correspondante :
+![Logo](https://github.com/Younzer/Projets-applicatifs/blob/master/sudoku/images/get_sol.png "Indices et solution")
+
 
 ### Ouverture
 
