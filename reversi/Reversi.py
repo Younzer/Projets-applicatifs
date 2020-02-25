@@ -44,7 +44,6 @@ class Board:
 
     def get_winner(self):
         results = self.get_nb_pieces()
-        print("Rsultats :", results)
         if results[0] > results[1]:
             return self._WHITE
         if results[0] < results[1]:
@@ -172,7 +171,6 @@ class Board:
             self._nextPlayer = self._BLACK
 
     def pop(self):
-        print("SELF STACK :", self._stack)
         [move, toflip] = self._stack.pop()
         [player,x,y] = move
         self._nextPlayer = player

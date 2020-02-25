@@ -46,7 +46,7 @@ class TreeNode(object):
 
     def get_score(self, c_param):
         """Calculate and return the value for this node"""
-        return self.Q + c_param * math.sqrt(math.log(self.parent.N) / self.N) if self.N != 0 else 0
+        return self.Q + c_param * math.sqrt(math.log(self.parent.N) / self.N) if self.N > 0 and self.parent.N > 0 else 0
 
     def is_leaf(self):
         """Check if leaf node (i.e. no nodes below this have been expanded)."""
@@ -59,7 +59,7 @@ class TreeNode(object):
 class MCTS(object):
     """An implementation of Monte Carlo Tree Search."""
 
-    def __init__(self, board, c_param=2, n_playout=10):
+    def __init__(self, board, c_param=2, n_playout=8):
         """
         c_param: a number in (0, inf) that controls the trade-off 
         between exploitation and exploration in Monte Carlo Tree Search
@@ -73,10 +73,7 @@ class MCTS(object):
         """Return best successor node from root"""
         current = root
         while len(current.children) > 0:
-            for child in current.children:
-                print("SCORE : ", child.get_score(self.c_param))
             current = max(current.children, key=lambda child: child.get_score(self.c_param))
-            print("meilleur score : ", current.get_score(self.c_param))
         return current
 
     def playout(self, node):
@@ -93,13 +90,12 @@ class MCTS(object):
             move = legal_moves[randint(0, len(legal_moves) - 1)]
             copy_node.board.push(move)
         winner = copy_node.board.get_winner()
-        print("WINNER : ", winner)
         if winner == -1:  # tie
             leaf_score = 0.0
         else:
             leaf_score = 1.0 if winner != copy_node.board._nextPlayer else -1.0
-        print("leaf score : ", leaf_score)
         # Update value and visit count of nodes in this traversal.
+        assert self.n_playout < 9, 'Too much ressources'
         new_node.update_recursive(-leaf_score)
 
     def best_child(self, root, color):
@@ -112,12 +108,10 @@ class MCTS(object):
             if score > best_score:
                 best_score = score
                 best_node = node
-        print(best_node)
         move = best_node.board.pop()
-        print("move : ", move)
         return move if move is not None else (color, -1, -1)
 
-    def get_move(self, player):
+    def get_move(self, player, board):
         """Runs all playouts sequentially and returns the most visited action.
         state: the current game state
         Return: the selected action
@@ -126,14 +120,14 @@ class MCTS(object):
         for n in range(self.n_playout):
             self.playout(root)
 
-        move = self.best_child(self.root, player)
+        move = self.best_child(root, player)
         return move
 
 
 class MCTSPlayer(object):
     """AI player based on MCTS"""
 
-    def __init__(self, c_param=2, n_playout=5, board_size=8):
+    def __init__(self, c_param=2, n_playout=8, board_size=8):
         self.board = Reversi.Board(board_size)
         self.mcts = MCTS(self.board, c_param, n_playout)
         self.player = None
@@ -142,8 +136,7 @@ class MCTSPlayer(object):
         if self.board.is_game_over():
             print("Referee told me to play but the game is over!")
             return (-1, -1)
-        move = self.mcts.get_move(self.player)
-        print('move : ', move)
+        move = self.mcts.get_move(self.player, self.board)
         (p, x, y) = move
         print(move)
         self.board.push(move)
@@ -151,10 +144,10 @@ class MCTSPlayer(object):
         return (x, y)
 
     def playOpponentMove(self, x, y):
-        print('move ', x, y)
-        print(self.board)
+        #print('move ', x, y)
+        #print(self.board)
         assert (self.board.is_valid_move(self.opponent, x, y))
-        print("Opponent played ", (x, y))
+        #print("Opponent played ", (x, y))
         self.board.push([self.opponent, x, y])
 
     def newGame(self, color):

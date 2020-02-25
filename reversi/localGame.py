@@ -22,14 +22,8 @@ nbmoves = 1
 outputs = ["",""]
 sysstdout= sys.stdout
 stringio = StringIO()
-
-print(b.legal_moves())
+print(b)
 while not b.is_game_over():
-    print("Referee Board:")
-    print(b)
-    print("Before move", nbmoves)
-    print("Legal Moves: ", b.legal_moves())
-    print("WHILE : ")
     nbmoves += 1
     otherplayer = (nextplayer + 1) % 2
     othercolor = b._BLACK if nextplayercolor == b._WHITE else b._WHITE
