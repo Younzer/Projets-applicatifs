@@ -32,7 +32,8 @@ Faire varier la taille de la forêt permet de déterminer plus précisément le 
 ### Conclusion
 En conclusion de notre expérience, nous pouvons donc dire que le seuil varie si on fait varier le nombre de foyers (il diminue si on augmente le nombre de foyers et inversement), et qu'il est ***approximativement de 60%*** si on considère qu'il n'y a qu'un seul foyer au départ du feu.
 
-
+<br />
+<br />
 # Pysat Sudoku
 
 Pour ce projet applicatif, l'objectif était d'utiliser le solver Pysat afin de générer des grilles de Sudoku n'ayant qu'une seule solution possible.
