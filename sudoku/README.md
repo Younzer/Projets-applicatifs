@@ -35,13 +35,14 @@ Nous avons donc une grille **aléatoire** dont le solver a pu trouver **une** so
 <br />
 
 Voici les étapes que nous suivons :
-* Nous avons créé un attribut "_hints" 
+* Nous avons créé un attribut "_hints" qui au départ prend l'ensemble de la solution de la grille
+* 
 
 ### Ouverture
 
 Il aurait été intéressant de pouvoir générer des grilles de différentes difficultés. On aurait pu considérer par exemple que moins il y a d'indices pour résoudre la grille et plus elle est difficile à rédoudre. Une solution pour générer des grilles de trois difficultés différentes serait alors la suivante :
-* Pour une *grille facile*, on utiliserait une fonction qui cherche systématiquement s'il y a un indice "décisif" à retirer, c'est-à-dire que si on le retire, il y a alors deux solutions possibles.
-* Pour une *grille moyenne*, nous utiliserions la solution que nous utilisons déjà, on retire à chaque fois un indice de manière aléatoire.
-* Pour une *grille difficile*, ce qui est plus délicat, on chercherait parmis les indices restants s'il y en a un qui ne soit pas décisif, s'il y en a plusieurs on choisit de manière aléatoire à défault d'avoir une meilleure manière de choisir.
+* Pour une *grille facile*, on utiliserait une fonction qui cherche systématiquement s'il y a un indice "décisif" qui une fois retirés permettrait d'avoir plusieurs solutions possibles.
+* Pour une *grille moyenne*, nous utiliserions la solution que nous utilisons déjà en retirant à chaque fois un indice de manière aléatoire.
+* Pour une *grille difficile*, on chercherait parmis les indices restants s'il y en a un qui ne soit pas décisif, s'il y en a plusieurs on choisit de manière aléatoire à défault d'avoir une meilleure manière de choisir.
 <br />
-Bien sûr, cette solution ne pourrait pas nous assurer d'avoir des grilles de niveaux bienx différents, surtout à cause du choix aléatoire d'indice à enlever, mais c'est une première approche qui peut être intéressant de tester.
+Bien sûr, cette solution peut être largement améliorée, et elle ne pourrait pas nous assurer d'avoir des grilles de niveaux bienx différents, surtout à cause du choix aléatoire d'indice à enlever, mais c'est une première approche qui peut être intéressant de tester.
