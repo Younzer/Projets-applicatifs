@@ -162,3 +162,42 @@ class MCTSPlayer(object):
 
     def getPlayerName(self):
         return "MCTS {}".format(self.player)
+
+
+class myPlayer(PlayerInterface):
+
+    def __init__(self, board_size=8):
+        self.board = Reversi.Board(board_size)
+        self.player = None
+
+    def getPlayerName(self):
+        return "Random Player"
+
+    def getPlayerMove(self):
+        if self._board.is_game_over():
+            print("Referee told me to play but the game is over!")
+            return (-1,-1)
+        moves = [m for m in self.board.legal_moves()]
+        move = moves[randint(0,len(moves)-1)]
+        self.board.push(move)
+        print("I am playing ", move)
+        (p,x,y) = move
+        assert(p==self.player)
+        print("My current board :")
+        print(self.board)
+        return (x,y) 
+
+    def playOpponentMove(self, x,y):
+        assert(self.board.is_valid_move(self.opponent, x, y))
+        print("Opponent played ", (x,y))
+        self.board.push([self.opponent, x, y])
+
+    def newGame(self, color):
+        self.mycolor = color
+        self.opponent = 1 if color == 2 else 2
+
+    def endGame(self, winner):
+        if self.player == winner:
+            print("I won!!!")
+        else:
+            print("I lost :(!!")
