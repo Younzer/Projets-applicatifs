@@ -18,6 +18,10 @@ La méthode est la suivante :
 La liste d'indices est créée avec la fonction qui suit :
 ![Logo](https://github.com/Younzer/Projets-applicatifs/blob/master/sudoku/images/generateFixedHints.png "Génération d'indices aléatoires")
 <br />
-
+<br />
+Dans l'appel à cette fonction, nous gérons immédiatement le fait que deux indices puissent être fixés sur une même case de la grille. La fonction qui suit permet de garder seulement le premier de ces indices :
+![Logo](![Logo](https://github.com/Younzer/Projets-applicatifs/blob/master/sudoku/images/generateFixedHints.png "Génération d'indices aléatoires") "Un seul indice par case")
+<br />
+<br />
 
 ### Sortie
